@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>status code</title>
+</head>
+
+<body>
+    <h2>status code</h2>
+    <script>
+        const myImage = document.querySelector("img");
+
+        const myRequest = new Request("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD53Y4BPQAIGHUqGiU-DzlzOFZHQdhTSPAPw&usqp=CAU");
+
+        fetch(myRequest)
+            .then((response) => {
+                alert("response.status =" + response.status); 
+                return response.blob();
+            })
+            .then((myBlob) => {
+                const objectURL = URL.createObjectURL(myBlob);
+                myImage.src = objectURL;
+            });
+    </script>
+</body>
+
+</html>

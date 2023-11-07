@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async code</title>
+    <script>
+        async function krina() {
+            let delhiweather = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("27 deg")
+                }, 2000)
+            })
+
+            let bangalorweather = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("21 deg")
+                }, 5000)
+            })
+
+            // delhiweather.then(alert)
+            // bangalorweather.then(alert)
+            console.log("fetching delhi weather please wait...")
+            let delhiW = await delhiweather
+            console.log("fetched delhi weather: " + delhiW)
+
+            console.log("fetching bangalor weather please wait...")
+            let bangalorW = await bangalorweather
+            console.log("fetched bangalor weather: " + bangalorW)
+            return [delhiW, bangalorW]
+
+        }
+        console.log("welcome to weather control room")
+        let a = krina()
+        a.then((value)=>{
+            console.log(value)
+        })
+       
+
+    </script>
+</head>
+
+<body>
+<h2>Async code</h2>
+</body>
+
+</html>
